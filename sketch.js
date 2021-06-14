@@ -69,22 +69,22 @@ function preload()
 {
 
   for (let i = 0; i < 5; i++) {
-    img_inicio[i] = loadImage("Assets_img/Inicial " + "(" + i + ").jpg");
+    img_inicio[i] = loadImage("./Assets_img/Inicial " + "(" + i + ").jpg");
     if (i < 4) {
-      img_prota[i] = loadImage("Assets_img/Niño " + (i + 1) + ".png");
+      img_prota[i] = loadImage("./Assets_img/Niño " + (i + 1) + ".png");
     }
 
-    img_inicio[i] = loadImage("Assets_img/Inicial " + "(" + i + ").jpg");
+    img_inicio[i] = loadImage("./Assets_img/Inicial " + "(" + i + ").jpg");
   }
 
 
 
 
 
-    olefs = loadImage("Assets_img/olef.png");
-    fogos = loadImage("Assets_img/fogo.png") ;
-    lectros = loadImage("Assets_img/lectry.png");
-    watars = loadImage("Assets_img/watar.png");
+    olefs = loadImage("./Assets_img/olef.png");
+    fogos = loadImage("./Assets_img/fogo.png") ;
+    lectros = loadImage("./Assets_img/lectry.png");
+    watars = loadImage("./Assets_img/watar.png");
 
 
 
