@@ -14,12 +14,6 @@ class Nivel_Hielo extends Nivel {
                 this.matriz[i][1] = 1;
                 this.matriz[i][12] = 1;
 
-
-
-
-
-
-
             }
         }
         this.matriz[1][6] = 0;
@@ -33,37 +27,70 @@ class Nivel_Hielo extends Nivel {
         this.matriz[0][7] = 1;
 
 
-        this.inemy = new Olef(50 + (1 * 100), 50 + (1 * 100), 2, 2, this.matriz);
-        this.anemy = new Olef(350 + (1 * 100), 50 + (1 * 100), 5, 2, this.matriz);
+        this.win = false;
+        this.vivoinemi = true;
+        this.vivoanemi = true;
+        if (this.vivoinemi) {
+            this.inemy = new Olef(50 + (1 * 100), 50 + (1 * 100), 2, 2, this.matriz);
+        }
+        if (this.vivoanemi) {
+            this.anemy = new Olef(350 + (1 * 100), 50 + (1 * 100), 5, 2, this.matriz);
+        }
 
-        this.daño = false;
     }
 
-    mostrar(x, y) {
+    mostrar(x, y, atac) {
 
+        if (this.vivoinemi === false && this.vivoanemi === false) {
+            this.win = true
+        }
+        this.daño = false;
+        this.atac = atac;
 
         fill("red")
-        //circle(0+(index*50),0+(jndex*50),100)
-        this.inemy.mostrar(this.img);
-        this.anemy.mostrar(this.img);
+        if (this.vivoanemi) {
+            this.anemy.mostrar(this.img);
+        }
 
-        //this.moverEnemigos();
+        if (this.vivoinemi) {
+            this.inemy.mostrar(this.img);
+        }
 
         this.contaudor++;
 
-        if (frameCount % 40 === 0) {
-         //   console.log(this.anemy.getPos());
-
-        }
 
         this.protax = x;
         this.protay = y;
-        
 
-        ;
+
+        if (dist(this.protax, this.protay, this.inemy.getPosX(), this.inemy.getPosY()) < 50) {
+            this.daño = true
+        }
+        if (dist(this.protax, this.protay, this.anemy.getPosX(), this.anemy.getPosY()) < 50) {
+            this.daño = true
+        }
+
+        if (this.atac === true) {
+
+            if (dist(this.protax, this.protay, this.inemy.getPosX(), this.inemy.getPosY()) < 200) {
+                this.vivoinemi = false
+            }
+            if (dist(this.protax, this.protay, this.anemy.getPosX(), this.anemy.getPosY()) < 200) {
+                this.vivoanemi = false
+            }
+
+        }
+
+
 
     }
 
-    
+    getdaño() {
+        return this.daño
+    }
+
+    getwin() {
+        return this.win
+    }
 
 }

@@ -1,68 +1,92 @@
 class Nivel_Pyro extends Nivel {
 
-    constructor(img){
-    
-    super(img);
-    
-    for (let i = 0; i < 7; i++) {
-            
-        for (let j = 0 ; j < 13 ; j++) {
-            
-            this.matriz[1][j] = 1;
-            this.matriz[7][j] = 1;
-            this.matriz[i][1] = 1;
-            this.matriz[i][12] = 1;
+    constructor(img) {
+
+        super(img);
+
+        for (let i = 0; i < 7; i++) {
+
+            for (let j = 0; j < 13; j++) {
+
+                this.matriz[1][j] = 1;
+                this.matriz[7][j] = 1;
+                this.matriz[i][1] = 1;
+                this.matriz[i][12] = 1;
+
+            }
+        }
+        this.matriz[1][6] = 0;
+        this.matriz[7][6] = 0;
+        this.matriz[7][7] = 0;
+        this.matriz[1][7] = 0;
+
+        this.matriz[0][6] = 1;
+        this.matriz[8][6] = 1;
+        this.matriz[8][7] = 1;
+        this.matriz[0][7] = 1;
 
 
-    
-    
-              
-        }}
-        this.matriz[1][6] = 0 ;
-        this.matriz[7][6] = 0 ;
-        this.matriz[7][7] = 0 ;
-       this.matriz[1][7] = 0 ;
+        this.vivoinemi = true;
+        this.vivoanemi = true;
 
-       this.matriz[0][6] = 1 ;
-        this.matriz[8][6] = 1 ;
-        this.matriz[8][7] = 1 ;
-       this.matriz[0][7] = 1 ;
+        if (this.vivoinemi) {
+            this.inemy = new Fogo(50 + (1 * 100), 50 + (1 * 100), 2, 2, this.matriz);
+        }
+        if (this.vivoanemi) {
+            this.anemy = new Fogo(350 + (1 * 100), 50 + (1 * 100), 5, 2, this.matriz);
+        }
 
+        this.daño = false;
+    }
 
-
- 
-
-       this.inemy = new Fogo(50 + (1 * 100), 50 + (1 * 100), 2, 2, this.matriz);
-       this.anemy = new Fogo(350 + (1 * 100), 50 + (1 * 100), 5, 2, this.matriz);
-
-       this.daño = false;
-   }
-
-   mostrar(x, y) {
+    mostrar(x, y, atac) {
 
 
-       fill("red")
-       //circle(0+(index*50),0+(jndex*50),100)
-       this.inemy.mostrar(this.img);
-       this.anemy.mostrar(this.img);
+        if (this.vivoinemi === false && this.vivoanemi === false) {
+            this.win = true
+        }
+        this.daño = false;
+        this.atac = atac;
+        fill("red")
 
-       //this.moverEnemigos();
+        if (this.vivoinemi) {
+            this.inemy.mostrar(this.img);
+        }
+        if (this.vivoanemi) {
+            this.anemy.mostrar(this.img);
+        }
 
-       this.contaudor++;
+        this.contaudor++;
 
-       if (frameCount % 40 === 0) {
-        //   console.log(this.anemy.getPos());
+        this.protax = x;
+        this.protay = y;
 
-       }
 
-       this.protax = x;
-       this.protay = y;
-       
+        if (dist(this.protax, this.protay, this.inemy.getPosX(), this.inemy.getPosY()) < 50) {
+            this.daño = true
+        }
+        if (dist(this.protax, this.protay, this.anemy.getPosX(), this.anemy.getPosY()) < 50) {
+            this.daño = true
+        }
 
-       ;
+        if (this.atac === true) {
 
-   }
+            if (dist(this.protax, this.protay, this.inemy.getPosX(), this.inemy.getPosY()) < 200) {
+                this.vivoinemi = false
+            }
+            if (dist(this.protax, this.protay, this.anemy.getPosX(), this.anemy.getPosY()) < 200) {
+                this.vivoanemi = false
+            }
 
-   
+        }
+    }
+
+    getdaño() {
+        return this.daño
+    }
+
+    getwin() {
+        return this.win
+    }
 
 }

@@ -1,37 +1,32 @@
 class Fogo extends Enemy {
-    constructor(x, y, refx, refy, matriz){
+    constructor(x, y, refx, refy, matriz) {
         super(x, y, refx, refy, matriz);
-        
+
     }
-    
-    mostrar(img){
-    super.mostrar(img);
-    
-    this.img= img;
-    
-    image(this.img,this.x,this.y-50)
-    
-    
+
+    mostrar(img) {
+        super.mostrar(img);
+
+        this.img = img;
+
+        image(this.img, this.x, this.y - 50)
+
+
     }
-    mover(){
-    super.mover();
-    
+    mover() {
+        super.mover();
+
     }
-    
-    
-    
-    
-    
-    
-    getPosX(){
-    
+
+    getPosX() {
+
         return this.x
-    } 
-    
-    getPosY(){
-    
+    }
+
+    getPosY() {
+
         return this.y
-    } 
-    
+    }
+
 
 }

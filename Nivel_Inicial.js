@@ -42,13 +42,6 @@ for (let i = 0; i < 8; i++) {
    
 }
 
-mostrar(){
-
-//if (frameCount % 80 === 0){
- // console.log(this.matriz);}
-
-}
-
 setEstado (estado){
     
     this.estado = estado; 
@@ -76,8 +69,11 @@ setEstado (estado){
         this.matriz[2][3] = 0;
         this.matriz[2][4] = 0;
 
-
+        this.matriz[2][7] = 0;
+        this.matriz[2][8] = 0;
         
+        this.matriz[6][3] = 0;
+        this.matriz[6][4] = 0;
     }
  if (this.estado === 1) {
         

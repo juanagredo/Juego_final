@@ -9,24 +9,12 @@ class Enemy {
         this.y = y;
         this.refX = refx;
         this.refY = refy;
-    
-
-
 
     }
     mostrar() {
-     //circle(this.x, this.y, 100)
- this.mover();
-       /*    this.daño = false; if (this.muerto === false) {
-           
 
-           
+        this.mover();
 
-            if (dist(this.protax, this.protay, this.x, this.y) < 70) {
-                this.daño = true
-
-            }
-        }*/
     }
 
     mover() {
@@ -36,13 +24,12 @@ class Enemy {
 
         }
 
-        //  if (this.cont_enemigo === 0) {
 
         if (this.cont_enemigo === 20) {
             this.dir = int(random(1, 5));
             this.cont_enemigo = 0;
 
-            //    console.log(this.matriz);    
+
         }
         this.cont_enemigo++;
 
@@ -117,12 +104,5 @@ class Enemy {
     getDead() {
         return this.muerto;
     }
-    
 
-    
-
-    //}
-
-
-    //0 + (index * 50), 0 + (jndex * 50)
 }

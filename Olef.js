@@ -1,37 +1,32 @@
 class Olef extends Enemy {
 
-constructor(x, y, refx, refy, matriz){
-    super(x, y, refx, refy, matriz);
-    
-}
+    constructor(x, y, refx, refy, matriz) {
+        super(x, y, refx, refy, matriz);
 
-mostrar(img){
-super.mostrar(img);
+    }
 
-this.img= img;
+    mostrar(img) {
+        super.mostrar(img);
 
-image(this.img,this.x,this.y-50)
+        this.img = img;
 
-
-}
-mover(){
-super.mover();
-
-}
+        image(this.img, this.x, this.y - 50)
 
 
+    }
+    mover() {
+        super.mover();
 
+    }
 
+    getPosX() {
 
+        return this.x
+    }
 
-getPosX(){
+    getPosY() {
 
-    return this.x
-} 
-
-getPosY(){
-
-    return this.y
-} 
+        return this.y
+    }
 
 }
